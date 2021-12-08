@@ -12,10 +12,15 @@ import {
     TouchableOpacity,
     StatusBar,
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-export default function App() {
+
+
+function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -46,6 +51,7 @@ export default function App() {
 
             <TouchableOpacity style={styles.loginBtn} onPress={(button) => {
                 console.log("123")
+                navigation.navigate('Home')
             }}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
@@ -100,3 +106,28 @@ const styles = StyleSheet.create({
         backgroundColor: "#e85e42",
     },
 });
+
+export default Login
+
+
+
+// import React from 'react';
+// import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+// const New = (props) => {
+//     return (
+//         <View style={{
+//             alignItems: 'center', flex: 1, justifyContent: 'center'
+//         }}>
+//             <TouchableOpacity onPress={() => {
+//                 props.navigation.navigate('Home')
+//             }}>
+//                 <Text>New</Text>
+//             </TouchableOpacity>
+//         </View>
+//     );
+// };
+
+// export default New;
+
+// const styles = StyleSheet.create({});
