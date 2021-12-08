@@ -8,56 +8,58 @@
 
 import React, { Purecomponent } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList, SafeAreaView, ScrollView } from "react-native";
-
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function App() {
     let { container, cardText, card, cardImage, priceText } = styles
     return (
-        //<SafeAreaView style={{styles.list}>
+        <SafeAreaView style={styles.container}>
 
-        <View style={styles.container}>
+            <View style={styles.container}>
 
-            <FlatList
-                data={[
-                    {
-                        key: 'Cola', price: '$5', imgSource: require("./productimage/cola.jpg")
-                    },
-                    { key: 'Cycle', price: '$100', imgSource: require("./productimage/cycle.jpg") },
-                    { key: 'Headphone', price: '$26', imgSource: require("./productimage/headphone.jpg") },
-                    { key: 'Shoe', price: '$80', imgSource: require("./productimage/shoe.jpg") },
-                    { key: 'Watch', price: '$280', imgSource: require("./productimage/watch.jpg") },
-                ]}
-                renderItem={({ item }) =>
+                <FlatList
+                    data={[
+                        {
+                            key: 'Cola', price: '$5', imgSource: require("./productimage/cola.jpg")
+                        },
+                        { key: 'Cycle', price: '$100', imgSource: require("./productimage/cycle.jpg") },
+                        { key: 'Headphone', price: '$26', imgSource: require("./productimage/headphone.jpg") },
+                        { key: 'Shoe', price: '$80', imgSource: require("./productimage/shoe.jpg") },
+                        { key: 'Watch', price: '$280', imgSource: require("./productimage/watch.jpg") },
+                    ]}
+                    renderItem={({ item }) =>
 
-                    <View style={container}>
-                        <TouchableOpacity style={card}>
-                            <Image style={cardImage} source={item.imgSource} />
-                            <Text style={cardText}>{item.key}</Text>
-                            <Text style={priceText}>{item.price}</Text>
-                        </TouchableOpacity>
-                    </View>
-
-
-
-                }
-                contentContainerStyle={{
-                    flexGrow: 1,
-                }}
-            />
+                        <View style={container}>
+                            <TouchableOpacity style={card} onPress={(button) => {
+                                console.log(item.key)
+                            }}>
+                                <Image style={cardImage} source={item.imgSource} />
+                                <Text style={cardText}>{item.key}</Text>
+                                <Text style={priceText}>{item.price}</Text>
+                            </TouchableOpacity>
+                        </View>
 
 
 
-        </View>
+                    }
+                    contentContainerStyle={{
+                        flexGrow: 1,
+                    }}
+                />
 
-        // </SafeAreaView>
+
+
+            </View>
+        </SafeAreaView>
+
     )
 
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 40,
+        marginTop: 20,
         backgroundColor: '#F6F6F6'
     },
     cardText: {
@@ -67,13 +69,13 @@ const styles = StyleSheet.create({
     },
     card: {
         backgroundColor: '#FFFFFF',
-        marginBottom: 10,
+
         marginLeft: '2%',
         marginRight: '2%',
         width: '96%',
         height: 280,
         shadowColor: '#000000',
-        shadowOpacity: '0.5',
+        shadowOpacity: 1,
         shadowOffset: {
             width: 3,
             height: 3
